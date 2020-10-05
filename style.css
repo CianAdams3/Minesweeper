@@ -3,6 +3,24 @@ body{
 }
 .title{
   color: aliceblue;
+
+}
+.glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #FCFC62, 0 0 40px #FCFC62, 0 0 50px #FCFC62, 0 0 60px #FCFC62, 0 0 70px #FCFC62;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #FF7F11, 0 0 40px #FF7F11, 0 0 50px #FF7F11, 0 0 60px #FF7F11, 0 0 70px #FF7F11, 0 0 80px #FF7F11;
+  }
 }
 .container {
   margin-top: 100px;
@@ -22,8 +40,13 @@ body{
   color: white;
   text-align: center;
 }
+.restart{
+  border-radius: 25px; 
+}
 .rulestitle{
+  margin-top: 20px;
   color: aliceblue;
+  text-decoration: underline;
 }
 p{
   color: aliceblue;
