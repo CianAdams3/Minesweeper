@@ -1,13 +1,3 @@
-// NOUGHTS AND CROSSES 
-// RESET WHEN FINISHED 
-// EXTRA - Scoreboard
-// EXTRA - Best of 5 Option
-// PLAYED ON A GRID OF 3 SQUARES X 3 SQUARES
-// PLAYER ONE = X
-// PLAYER TWO = O
-// PLAYER ONE AND PLAYER TWO TAKE TURNS ADDING THEIR SYMBOL (X or O) INTO EMPTY SQUARES.
-// FIRST PLAYER TO GET 3 OF THEIR SYMBOLS IN A ROW (UP, DOWN, ACROSS OR DIAGONALLY) WINS.
-// IF ALL 9 SQUARES ARE FILLED, AND NO ROW IS FILLED BY THE SAME SYMBOL. ITS A DRAW.
 let clicks = 0
 const cells = document.querySelectorAll(".cell");
 const winningCombos = [
@@ -26,6 +16,21 @@ document.getElementById("grid").addEventListener("click", function (event) {
 });
 let xMove = [];
 let oMove = [];
+const checkWin = (winningCombos, movesArray)=>{
+    for (let i = 0; i < winningCombos.length; i++) {
+      let count = 0
+      for (let j = 0; j < winningCombos[i].length; j++) { 
+        if (movesArray.includes(winningCombos[i][j])){
+          count++
+          if(count === 3){
+          alert(`Game Over, Someone has won!!!`);
+          return true
+          }
+        }
+      }
+    }
+    return false
+  }
 cells.forEach (cell => {
   cell.addEventListener("click", (event) => {
       if ((event.target.innerHTML === ("")) && (clicks % 2 == 0)) {
@@ -35,34 +40,17 @@ cells.forEach (cell => {
           event.target.innerHTML = "O";
           oMove.push(Number(event.target.id));
       }
-    for (let i = 0; i < winningCombos.length; i++) {
-      let count = 0
-      for (let j = 0; j < winningCombos[i].length; j++) { 
-        if (xMove.includes(winningCombos[i][j])){
-          count++
-          if(count === 3){
-          alert("x win");
-          window.location.reload();
-          }
-        }
-      }
-    }
-    for (let i = 0; i < winningCombos.length; i++) {
-      let count = 0
-      for (let j = 0; j < winningCombos[i].length; j++) { 
-        if (oMove.includes(winningCombos[i][j])){
-          count++
-          if(count === 3){
-          alert("o win"); 
-          window.location.reload();
-          }
-        }
-      }
-    }
+      checkWin(winningCombos,xMove)
+      checkWin(winningCombos,oMove)
   });
- 
 })
-
+// NOUGHTS AND CROSSES 
+// RESET WHEN FINISHED 
+// PLAYED ON A GRID OF 3 SQUARES X 3 SQUARES
+// PLAYER ONE = X
+// PLAYER TWO = O
+// PLAYER ONE AND PLAYER TWO TAKE TURNS ADDING THEIR SYMBOL (X or O) INTO EMPTY SQUARES.
+// FIRST PLAYER TO GET 3 OF THEIR SYMBOLS IN A ROW (UP, DOWN, ACROSS OR DIAGONALLY) WINS.
 
   
 
